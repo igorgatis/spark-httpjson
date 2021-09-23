@@ -1,2 +1,5 @@
-*.class
-*.log
+target/
+.idea/
+.idea_modules/
+.bsp/
+.DS_Store
