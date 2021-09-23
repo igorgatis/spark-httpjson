@@ -1,6 +1,8 @@
 # HTTP JSON Data Source for Apache Spark
 
-This library issues HTTP read requests to a service which implements a simple JSON protocol.
+This library allows Spark integration using HTTP requests using a simple JSON based protocol.
+
+It is useful for scenarios where one needs to fetch data from a system for which there is no native Spark connector or reading data directly from the data source (eg. SQL database) is not possible, complex or undesired.
 
 ## Usage
 
