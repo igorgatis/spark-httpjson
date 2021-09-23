@@ -68,7 +68,7 @@ The endpoint for `/GetTable` and `/PlanInputPartitions` should reply with `Conte
 
 #### /GetTable
 In case of success, it will container two fields, `name` of the "table" being read and `schema` which is an object - which is a bit tricky to construct. In fact, one should probably use a library to build:
-* **C#** [API](https://github.com/dotnet/spark/tree/main/src/csharp/Microsoft.Spark/Sql/Types) | [Nuget](https://www.nuget.org/packages/Microsoft.Spark/)
+* **C#**: Microsoft.Spark's DataType [API](https://github.com/dotnet/spark/tree/main/src/csharp/Microsoft.Spark/Sql/Types) | [Nuget](https://www.nuget.org/packages/Microsoft.Spark/)
 
 Sample response:
 ```
