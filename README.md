@@ -51,5 +51,9 @@ All non `http.` prefixed options are passed as JSON payload to requests made to 
 
 ## C#
 
-TODO: add examples for Typescript, C#, Go(?)
+* Library: [backend/csharp/Spark.HttpJson.AspNetCore](backend/csharp/Spark.HttpJson.AspNetCore)
+* Sample: [backend/csharp/Spark.HttpJson.SampleService](backend/csharp/Spark.HttpJson.SampleService)
 
+## Typescript
+
+> TODO
