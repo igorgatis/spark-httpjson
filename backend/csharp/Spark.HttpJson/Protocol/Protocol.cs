@@ -1,4 +1,4 @@
-using Microsoft.Spark.Sql.Types;
+using Spark.HttpJson.Microsoft.Spark.Sql.Types;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

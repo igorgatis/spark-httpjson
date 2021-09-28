@@ -5,7 +5,7 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Spark.Sql.Types
+namespace Spark.HttpJson.Microsoft.Spark.Sql.Types
 {
     /// <summary>
     /// An internal type used to represent everything that is not null, arrays, structs, and maps.

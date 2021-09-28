@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\nuget.Build.props" />
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.Spark.Sql.Types\Microsoft.Spark.Sql.Types.csproj" />
     <ProjectReference Include="..\Spark.HttpJson.AspNetCore\Spark.HttpJson.AspNetCore.csproj" />
     <ProjectReference Include="..\Spark.HttpJson\Spark.HttpJson.csproj" />
   </ItemGroup>

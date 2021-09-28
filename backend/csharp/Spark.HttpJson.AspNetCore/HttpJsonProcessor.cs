@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Net.Http.Headers;
-using Microsoft.Spark.Sql.Types;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Spark.HttpJson.Microsoft.Spark.Sql.Types;
 using Spark.HttpJson.Protocol;
 using System;
 using System.Collections.Generic;
