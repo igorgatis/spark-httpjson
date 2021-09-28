@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Spark.Sql.Types\Microsoft.Spark.Sql.Types.csproj" />
-    <ProjectReference Include="..\Spark.HttpJson.Protocol\Spark.HttpJson.Protocol.csproj" />
+    <ProjectReference Include="..\Spark.HttpJson\Spark.HttpJson.csproj" />
   </ItemGroup>
 
 </Project>

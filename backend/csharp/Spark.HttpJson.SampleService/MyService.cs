@@ -1,6 +1,7 @@
 using Microsoft.Spark.Sql.Types;
 using Newtonsoft.Json;
 using Spark.HttpJson.Protocol;
+using Spark.HttpJson.Util;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -65,14 +66,7 @@ namespace Spark.HttpJson.SampleService
             return new GetTableResponse
             {
                 Name = "Pets",
-                Schema = new StructType(
-                    new StructField[]
-                    {
-                        new StructField("OwnerName", new StringType()),
-                        new StructField("PetName", new StringType()),
-                        new StructField("PetWeightInKg", new FloatType()),
-                    }
-                ),
+                Schema = SchemaBuilder.Build<PetInfo>(),
             };
         }
 
