@@ -47,52 +47,21 @@ namespace Spark.HttpJson.SampleService
 
         class Options
         {
-            public string Entity;
-            public int PartitionSize;
-            public float MinimumWeightInKg;
+            public string Entity { get; set; }
+            public int PartitionSize { get; set; }
+            public float MinimumWeightInKg { get; set; }
         }
 
-        private static string SafeGetOption(IRequestWithOptions request, string key)
+        private Options ParseOptions(IRequestWithOptions request)
         {
-            string text = "";
-            request.Options?.TryGetValue(key, out text);
-            return text;
-        }
-
-        private (Options, string) ParseOptions(IRequestWithOptions request)
-        {
-            try
-            {
-                var options = new Options
-                {
-                    Entity = SafeGetOption(request, "myservice.Entity"),
-                };
-
-                int.TryParse(
-                    SafeGetOption(request, "myservice.PartitionSize"),
-                    out options.PartitionSize);
-                options.PartitionSize = Math.Max(1, options.PartitionSize);
-
-                float.TryParse(
-                    SafeGetOption(request, "myservice.MinimumWeightInKg"),
-                    NumberStyles.Any,
-                    CultureInfo.InvariantCulture,
-                    out options.MinimumWeightInKg);
-
-                return (options, null);
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e);
-                return (null, e.Message);
-            }
+            var options = request.ParseOptions<Options>("myservice.");
+            options.PartitionSize = Math.Max(1, options.PartitionSize);
+            return options;
         }
 
         public GetTableResponse GetTable(GetTableRequest request)
         {
-            var (options, error) = ParseOptions(request);
-            if (error != null) new GetTableResponse { Error = error };
-
+            var options = ParseOptions(request);
             return new GetTableResponse
             {
                 Name = "Pets",
@@ -115,8 +84,7 @@ namespace Spark.HttpJson.SampleService
 
         public PlanInputPartitionsResponse PlanInputPartitions(PlanInputPartitionsRequest request)
         {
-            var (options, error) = ParseOptions(request);
-            if (error != null) new PlanInputPartitionsResponse { Error = error };
+            var options = ParseOptions(request);
 
             var partitions = new List<PartitionDescriptor>();
             for (var offset = 0; offset < _pets.Count; offset += options.PartitionSize)
@@ -141,8 +109,8 @@ namespace Spark.HttpJson.SampleService
 
         public IEnumerable<object> ReadPartition(ReadPartitionRequest request)
         {
-            var (options, error) = ParseOptions(request);
-            if (error == null)
+            var options = ParseOptions(request);
+            if (options != null)
             {
                 var partition = JsonConvert.DeserializeObject<PartitionInfo>(
                     Encoding.ASCII.GetString(request.Payload));
@@ -153,7 +121,7 @@ namespace Spark.HttpJson.SampleService
                     {
                         count += 1;
                         yield return pet;
-                        if (count >= options.PartitionSize) break;
+                        if (count >= partition.Count) break;
                     }
                 }
             }

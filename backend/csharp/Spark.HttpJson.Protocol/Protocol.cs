@@ -8,7 +8,7 @@ namespace Spark.HttpJson.Protocol
 {
     public interface IRequestWithOptions
     {
-        Dictionary<string, string> Options { get; }
+        Dictionary<string, string> Options { get; set; }
     }
 
     public sealed class GetTableRequest : IRequestWithOptions
