@@ -27,7 +27,7 @@ namespace Spark.HttpJson.Protocol
                     }
                 }
                 var json = JsonConvert.SerializeObject(values);
-                return JsonConvert.DeserializeObject<TOptions>(json); 
+                return JsonConvert.DeserializeObject<TOptions>(json);
             }
             catch (Exception e)
             {
