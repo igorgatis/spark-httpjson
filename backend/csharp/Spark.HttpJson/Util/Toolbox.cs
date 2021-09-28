@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
+using Spark.HttpJson.Protocol;
 using System;
 using System.Collections.Generic;
 
-namespace Spark.HttpJson.Protocol
+namespace Spark.HttpJson.Util
 {
     public static class Toolbox
     {

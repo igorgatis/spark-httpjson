@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson.SampleServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Spark.Sql.Types", "Microsoft.Spark.Sql.Types\Microsoft.Spark.Sql.Types.csproj", "{53860FDF-DFAD-4849-9974-2250A305236C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson.Protocol", "Spark.HttpJson.Protocol\Spark.HttpJson.Protocol.csproj", "{0A4E7E39-7497-4D95-93E7-96931367218C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson", "Spark.HttpJson\Spark.HttpJson.csproj", "{0A4E7E39-7497-4D95-93E7-96931367218C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson.AspNetCore", "Spark.HttpJson.AspNetCore\Spark.HttpJson.AspNetCore.csproj", "{98F00790-A510-4158-AD04-58E505F38D39}"
 EndProject
