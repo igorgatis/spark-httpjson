@@ -1,9 +1,15 @@
 name: Spark 3 / Java 11
 on:
   push:
-    branches: [main]
+    branches:
+    - 'main'
+    paths:
+    - 'spark-httpjson/**'
   pull_request:
-    branches: [main]
+    branches:
+    - 'main'
+    paths:
+    - 'spark-httpjson/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,4 +20,5 @@ jobs:
         with:
           java-version: 'adopt@1.11'
       - name: Build
-        run: sbt ++2.12.10 clean compile
+        working-directory: 'spark-httpjson/'
+        run: sbt ++2.12.10 clean compile package
