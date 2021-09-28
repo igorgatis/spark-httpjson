@@ -1,0 +1,30 @@
+activate "Spark+HttpJson"
+
+"Spark+HttpJson"->HttpJson: GetTable({options})
+activate HttpJson
+HttpJson->Datasource: options
+activate Datasource
+Datasource->HttpJson: Schema
+deactivate Datasource
+HttpJson->"Spark+HttpJson": {name, schema}
+deactivate HttpJson
+
+"Spark+HttpJson"->HttpJson: PlanInputPartitions({options})
+activate HttpJson
+HttpJson->Datasource: options
+activate Datasource
+Datasource->HttpJson: Partitions
+deactivate Datasource
+HttpJson->"Spark+HttpJson": {partitions}
+deactivate HttpJson
+
+loop partitions
+    "Spark+HttpJson"->HttpJson: ReadPartition({options, partition})
+    activate HttpJson
+    HttpJson->Datasource: options + partition
+    activate Datasource
+    Datasource->HttpJson: Records
+    deactivate Datasource
+    HttpJson->"Spark+HttpJson": JSON lines
+    deactivate HttpJson
+end

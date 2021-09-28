@@ -10,7 +10,7 @@ Apache Spark uses `spark-httpjson` client library to connect to your backend. It
 
 Your server needs to implement both discovery and partition reading operations. This repository includes reference implementations for the HTTP handling so you can focus on the actual logic.
 
-Check [PROTOCOL.md](PROTOCOL.md) for details on how messages are exchanged.
+Check [protocol/README.md](protocol/README.md) for details on how messages are exchanged.
 
 ## Usage
 
