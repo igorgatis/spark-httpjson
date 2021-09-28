@@ -5,60 +5,11 @@ The protocol requires the following operations:
 * **PlanInputPartitions**: called once to list partitions.
 * **ReadPartition**: called as many times as there are partitions, each time it reads all rows from that partition.
 
-<!-- https://sequencediagram.org/
+![](protocol.png)
 
-title Protocol
+## Request/Response formats
 
-participantgroup #lightgray Spark
-participant Spark+HttpJson
-end
-
-participantgroup #lightgray Backend
-participant HttpJson
-participant Datasource
-end
-
-activate Spark+HttpJson
-
-Spark+HttpJson->HttpJson: GetTable({options})
-activate HttpJson
-HttpJson->Datasource:
-activate Datasource
-Datasource->HttpJson: Schema
-deactivate Datasource
-HttpJson->Spark+HttpJson: {name, schema}
-deactivate HttpJson
-
-Spark+HttpJson->HttpJson: PlanInputPartitions({options})
-activate HttpJson
-HttpJson->Datasource:
-activate Datasource
-Datasource->HttpJson: Partitions
-deactivate Datasource
-HttpJson->Spark+HttpJson: {partitions}
-deactivate HttpJson
-
-
-deactivate Spark+HttpJson
-
-loop partitions
-activate Spark+HttpJson
-Spark+HttpJson->HttpJson: ReadPartition({options, partition})
-activate HttpJson
-HttpJson->Datasource:
-activate Datasource
-Datasource->HttpJson: Records
-deactivate Datasource
-HttpJson->Spark+HttpJson: JSON lines
-deactivate HttpJson
-end
--->
-
-## Payload format
-
-The request for all operations above expect a JSON as input with `Content-Type: application/json`. The response for `GetTable` and `PlanInputPartitions` are also one JSON object for each.
-
-For performance reasons, the response for `ReadPartition` uses JSON lines and `Content-Type: application/json-seq`. Each read record must be encoded as a single line. See See https://jsonlines.org/.
+The request for all operations above expect a JSON as input with `Content-Type: application/json`. The response for `GetTable` and `PlanInputPartitions` are also one JSON object each. For performance reasons, the response for `ReadPartition` uses JSON lines and `Content-Type: application/json-seq`. Each read record must be encoded as a single line. See See https://jsonlines.org/.
 
 ## Operations
 
@@ -66,7 +17,7 @@ For performance reasons, the response for `ReadPartition` uses JSON lines and `C
 
 The request includes the non `http.` prefixed options under the `options` field. In case of success, the response will include two fields: the `name` of the data source being read and its `schema`. In case of failure, it includes a `error` field with a message.
 
-NOTE: Constructing schema by hand is very error prone, you should use probably use a library to help you on that. Check [backends folder](https://github.com/igorgatis/spark-httpjson/blob/main/backend).
+NOTE: Constructing schema by hand is very error prone, you should use probably use a library. Check [backends folder](https://github.com/igorgatis/spark-httpjson/blob/main/backend).
 
 **Request**
 ```
@@ -142,18 +93,18 @@ Content-Type: application/json
 
 {
   "partitions": [{
-    "payload": "e1RhYmxlIjoiUGV0cyIsIk1pbldlaWdodEluS2ciOjUsIkNvdW50IjoxMDAwfQ==",
+    "payload": "eyJUYWJsZSI6IlBldHMiLCJNaW5XZWlnaHRJbktnIjo1LCJDb3VudCI6MTAwMH0=",
   },{
-    "payload": "e1RhYmxlIjoiUGV0cyIsIk1pbldlaWdodEluS2ciOjUsIk9mZnNldCI6MTAwMCwiQ291bnQiOjIwMDB9",
+    "payload": "eyJUYWJsZSI6IlBldHMiLCJNaW5XZWlnaHRJbktnIjo1LCJPZmZzZXQiOjEwMDAsIkNvdW50IjoyMDAwfQ==",
   },{
-    "payload": "e1RhYmxlIjoiUGV0cyIsIk1pbldlaWdodEluS2ciOjUsIk9mZnNldCI6MjAwMH0=",
+    "payload": "eyJUYWJsZSI6IlBldHMiLCJNaW5XZWlnaHRJbktnIjo1LCJPZmZzZXQiOjIwMDB9",
   }]
 }
 ```
 The base64 strings from the example above decode to:
-* `{Table":"Pets","MinWeightInKg":5,"Count":1000}`
-* `{Table":"Pets","MinWeightInKg":5,"Offset":1000,"Count":2000}`
-* `{Table":"Pets","MinWeightInKg":5,"Offset":2000}`
+* `{"Table":"Pets","MinWeightInKg":5,"Count":1000}`
+* `{"Table":"Pets","MinWeightInKg":5,"Offset":1000,"Count":2000}`
+* `{"Table":"Pets","MinWeightInKg":5,"Offset":2000}`
 
 ### ReadPartition
 
@@ -173,7 +124,7 @@ Content-Type: application/json
     "myservice.PartitionSize": "1000",
     "myservice.MinimumWeightInKg": "5"
   ],
-  "payload": "e1RhYmxlIjoiUGV0cyIsIk1pbldlaWdodEluS2ciOjUsIk9mZnNldCI6MjAwMH0="
+  "payload": "eyJUYWJsZSI6IlBldHMiLCJNaW5XZWlnaHRJbktnIjo1LCJPZmZzZXQiOjIwMDB9"
 }
 ```
 **Response**
@@ -187,4 +138,4 @@ Content-Type: application/json-seq
 ...
 ```
 
-In the example above, `e1RhYmxlIjoiUGV0cyIsIk1pbldlaWdodEluS2ciOjUsIk9mZnNldCI6MjAwMH0=` decodes to `{Table":"Pets","MinWeightInKg":5,"Offset":2000}` and the JSON objects separated by lines represents the remaning elegible pets from the dataset from offset `2000`.
+In the example above, `eyJUYWJsZSI6IlBldHMiLCJNaW5XZWlnaHRJbktnIjo1LCJPZmZzZXQiOjIwMDB9` decodes to `{"Table":"Pets","MinWeightInKg":5,"Offset":2000}` and the JSON objects separated by lines represents the remaning elegible pets from the dataset from offset `2000`.
