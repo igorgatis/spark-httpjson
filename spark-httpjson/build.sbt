@@ -10,7 +10,7 @@ crossScalaVersions := Seq("2.11.12", "2.12.10")
 
 scalacOptions := Seq("-unchecked", "-deprecation")
 
-val sparkVersion = "3.1.2"
+val sparkVersion = "3.1.1"
 
 // To avoid packaging it, it's Provided below
 autoScalaLibrary := false

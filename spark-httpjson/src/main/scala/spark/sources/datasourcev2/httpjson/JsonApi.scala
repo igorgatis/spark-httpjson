@@ -134,6 +134,13 @@ class HttpClient {
         settings.headers.put("Authorization", "Basic " + basicAuth)
     }
 
+    settings.url match {
+      case None => throw new Exception(s"Missing http.url option")
+      case Some(url) => if (!url.endsWith("/")) {
+        settings.url = Some(url + "/")
+      }
+    }
+
     if (settings.gzip) {
       settings.headers.put("Accept-Encoding", "gzip")
     }
