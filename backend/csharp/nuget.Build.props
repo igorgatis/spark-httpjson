@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <Authors>Igor Gatis</Authors>
+    <Description></Description>
+    <RepositoryUrl>https://github.com/igorgatis/spark-httpjson/backend/csharp</RepositoryUrl>
+    <PackageTags>spark;dotnet;csharp</PackageTags>
+  </PropertyGroup>
+</Project>

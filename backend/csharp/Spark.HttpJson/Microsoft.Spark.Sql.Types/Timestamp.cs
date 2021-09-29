@@ -4,7 +4,7 @@
 
 using System;
 
-namespace Microsoft.Spark.Sql.Types
+namespace Spark.HttpJson.Microsoft.Spark.Sql.Types
 {
     /// <summary>
     /// Represents Timestamp containing year, month, day, hour, minute, second, microsecond in

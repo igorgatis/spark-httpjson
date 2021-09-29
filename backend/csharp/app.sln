@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson.SampleService", "Spark.HttpJson.SampleService\Spark.HttpJson.SampleService.csproj", "{2F0E6C78-F3DD-4D2D-9331-7A6FD27A7643}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Spark.Sql.Types", "Microsoft.Spark.Sql.Types\Microsoft.Spark.Sql.Types.csproj", "{53860FDF-DFAD-4849-9974-2250A305236C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson", "Spark.HttpJson\Spark.HttpJson.csproj", "{0A4E7E39-7497-4D95-93E7-96931367218C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spark.HttpJson.AspNetCore", "Spark.HttpJson.AspNetCore\Spark.HttpJson.AspNetCore.csproj", "{98F00790-A510-4158-AD04-58E505F38D39}"
@@ -36,18 +34,6 @@ Global
 		{2F0E6C78-F3DD-4D2D-9331-7A6FD27A7643}.Release|x64.Build.0 = Release|Any CPU
 		{2F0E6C78-F3DD-4D2D-9331-7A6FD27A7643}.Release|x86.ActiveCfg = Release|Any CPU
 		{2F0E6C78-F3DD-4D2D-9331-7A6FD27A7643}.Release|x86.Build.0 = Release|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Debug|x64.Build.0 = Debug|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Debug|x86.Build.0 = Debug|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Release|x64.ActiveCfg = Release|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Release|x64.Build.0 = Release|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Release|x86.ActiveCfg = Release|Any CPU
-		{53860FDF-DFAD-4849-9974-2250A305236C}.Release|x86.Build.0 = Release|Any CPU
 		{0A4E7E39-7497-4D95-93E7-96931367218C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A4E7E39-7497-4D95-93E7-96931367218C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A4E7E39-7497-4D95-93E7-96931367218C}.Debug|x64.ActiveCfg = Debug|Any CPU

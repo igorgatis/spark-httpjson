@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Spark.Sql.Types
+namespace Spark.HttpJson.Microsoft.Spark.Sql.Types
 {
     /// <summary>
     /// The base type of all Spark SQL data types.

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Spark.Sql.Types
+namespace Spark.HttpJson.Microsoft.Spark.Sql.Types
 {
     /// <summary>
     /// An array type containing multiple values of a type.
