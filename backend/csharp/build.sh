@@ -1,9 +1,13 @@
 #!/bin/bash
 
+set -e
+
 pushd "$( dirname "${BASH_SOURCE[0]}" )"
+
+sudo docker build . -t spark-httpjson-backend-csharp
 
 sudo docker run -it --rm \
   -v $PWD:/app \
   -w /app \
-  mcr.microsoft.com/dotnet/sdk:3.1 \
+  spark-httpjson-backend-csharp \
   dotnet build app.sln

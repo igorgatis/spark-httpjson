@@ -6,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Spark.HttpJson.SampleService
+namespace sample
 {
     class Program
     {
         static public void Configure(IApplicationBuilder app)
         {
-            app.UseSparkHttpJson("/spark-api", new MyService());
+            app.UseSparkHttpJson("/spark-api", new PetService());
         }
 
         static void Main()
@@ -20,7 +20,7 @@ namespace Spark.HttpJson.SampleService
             new WebHostBuilder()
                 .UseKestrel()
                 .Configure(Configure)
-                .UseUrls("http://+:8080")
+                .UseUrls("http://0.0.0.0:9999")
                 .Build()
                 .Run();
         }
